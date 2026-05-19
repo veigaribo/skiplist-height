@@ -1,0 +1,47 @@
+[
+  {
+    "file": "benchmark.cpp",
+    "arguments": [
+      "/usr/bin/g++",
+      "-mlzcnt",
+      "-O3",
+      "-flto",
+      "-I..",
+      "-o",
+      "bench",
+      "benchmark.cpp"
+    ],
+    "directory": "/media/shared/src/c/skip-list/benchmark",
+    "output": "bench"
+  },
+  {
+    "file": "../random_level.c",
+    "arguments": [
+      "/usr/bin/g++",
+      "-mlzcnt",
+      "-O3",
+      "-flto",
+      "-I..",
+      "-o",
+      "bench",
+      "../random_level.c"
+    ],
+    "directory": "/media/shared/src/c/skip-list/benchmark",
+    "output": "bench"
+  },
+  {
+    "file": "../rng.c",
+    "arguments": [
+      "/usr/bin/g++",
+      "-mlzcnt",
+      "-O3",
+      "-flto",
+      "-I..",
+      "-o",
+      "bench",
+      "../rng.c"
+    ],
+    "directory": "/media/shared/src/c/skip-list/benchmark",
+    "output": "bench"
+  }
+]

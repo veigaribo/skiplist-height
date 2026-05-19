@@ -1,0 +1,67 @@
+[
+  {
+    "file": "demo.c",
+    "arguments": [
+      "/usr/bin/gcc",
+      "-mlzcnt",
+      "-g3",
+      "-o",
+      "debug",
+      "demo.c"
+    ],
+    "directory": "/media/shared/src/c/skip-list",
+    "output": "debug"
+  },
+  {
+    "file": "random_level.c",
+    "arguments": [
+      "/usr/bin/gcc",
+      "-mlzcnt",
+      "-g3",
+      "-o",
+      "debug",
+      "random_level.c"
+    ],
+    "directory": "/media/shared/src/c/skip-list",
+    "output": "debug"
+  },
+  {
+    "file": "random_level.h",
+    "arguments": [
+      "/usr/bin/gcc",
+      "-mlzcnt",
+      "-g3",
+      "-o",
+      "debug",
+      "random_level.h"
+    ],
+    "directory": "/media/shared/src/c/skip-list",
+    "output": "debug"
+  },
+  {
+    "file": "rng.c",
+    "arguments": [
+      "/usr/bin/gcc",
+      "-mlzcnt",
+      "-g3",
+      "-o",
+      "debug",
+      "rng.c"
+    ],
+    "directory": "/media/shared/src/c/skip-list",
+    "output": "debug"
+  },
+  {
+    "file": "rng.h",
+    "arguments": [
+      "/usr/bin/gcc",
+      "-mlzcnt",
+      "-g3",
+      "-o",
+      "debug",
+      "rng.h"
+    ],
+    "directory": "/media/shared/src/c/skip-list",
+    "output": "debug"
+  }
+]
