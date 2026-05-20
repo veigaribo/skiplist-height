@@ -1,7 +1,7 @@
 This repository contains an interesting way of generating a random height for an entry
-in a [skip list](https://en.wikipedia.org/wiki/Skip_list). The main algorithm can be
-found in `random_level.h`, named `get_random_level`. It takes as parameters two
-numbers:
+in a [skip list](https://en.wikipedia.org/wiki/Skip_list) in a x86_64 CPU. The main
+algorithm can be found in `random_level.h`, named `get_random_level`. It expects two
+numbers as parameters:
 
 1. A value derived from $p$: The chance that, if the node is in level $k$, it's also
    in level $k + 1$; described in more detail below;
@@ -11,7 +11,8 @@ And produces a number as if had flipped coins with chance $p$ of landing on head
 until it got tails and then returned the amount of heads it got.
 
 It's based on the function $f(x) = 1 + { log(x) \over log(p) }$, which, when sampled
-with uniform values in the range $(0, 1]$, produces the desired effect.
+with uniform values in the range $(0, 1]$, produces the desired effect when the
+resulting number is floored.
 
 In order to approximate the $log$ function, which I chose to be base 2, I used fixed
 point numbers and employed the x86_64 LZCNT instruction, as well as a bit of bit
