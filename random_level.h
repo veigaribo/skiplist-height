@@ -58,8 +58,16 @@ static inline uint8_t get_random_level(uint32_t fix_log2_p, uint8_t max) {
   return (result < max) ? result : max;
 }
 
-uint8_t get_random_level_few(uint8_t max);
-uint8_t get_random_level_mid(uint8_t max);
-uint8_t get_random_level_many(uint8_t max);
+static inline uint8_t get_random_level_few(uint8_t max) {
+  return get_random_level(FIX_LOG2_ONE_FOURTH, max);
+}
+
+static inline uint8_t get_random_level_mid(uint8_t max) {
+  return get_random_level(FIX_LOG2_FIVE_OVER_SIXTEEN, max);
+}
+
+static inline uint8_t get_random_level_many(uint8_t max) {
+  return get_random_level(FIX_LOG2_INV_E, max);
+}
 
 #endif // !VEIGARIBO_RANDOM_LEVEL
