@@ -18,6 +18,7 @@ static int zslRandomLevel(void) {
 
 static void redis_random_level(benchmark::State &state) {
   for (auto _ : state) {
-    zslRandomLevel();
+    auto x = zslRandomLevel();
+    benchmark::DoNotOptimize(x);
   }
 }

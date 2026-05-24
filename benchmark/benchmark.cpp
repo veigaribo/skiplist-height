@@ -47,7 +47,8 @@ uint8_t basic_random_level(uint8_t max) {
 
 static void basic_random_level(benchmark::State &state) {
   for (auto _ : state) {
-    basic_random_level(16);
+    auto x = basic_random_level(16);
+    benchmark::DoNotOptimize(x);
   }
 }
 
@@ -55,7 +56,8 @@ static void basic_random_level(benchmark::State &state) {
 
 static void veigaribo_random_level(benchmark::State &state) {
   for (auto _ : state) {
-    get_random_level_mid(16);
+    auto x = get_random_level_mid(16);
+    benchmark::DoNotOptimize(x);
   }
 }
 

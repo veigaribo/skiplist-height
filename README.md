@@ -20,8 +20,8 @@ In order to approximate the $log$ function, which I chose to be base 2, I used f
 point numbers and employed the x86_64 LZCNT instruction, as well as a bit of bit
 twiddling and math.
 
-The function, when optimized by a modern compiler, seems to perform at least as well
-as a traditional loop, at least on my machine.
+The function, when optimized by a modern compiler, seems to run even faster than a
+traditional loop, at least on my machine.
 
 - `rng.{c,h}` implements xoshiro256+, the PRNG algorithm used;
 - `random_level.h` provides `get_random_level`, to generate levels with a custom
@@ -39,7 +39,7 @@ as a traditional loop, at least on my machine.
 Benchmark example, after running in user space with no preparation:
 
 ```
-2026-05-19T09:31:43-03:00
+2026-05-24T12:46:25-03:00
 Running ./bench
 Run on (8 X 2300 MHz CPU s)
 CPU Caches:
@@ -47,13 +47,13 @@ CPU Caches:
   L1 Instruction 64 KiB (x4)
   L2 Unified 512 KiB (x4)
   L3 Unified 4096 KiB (x1)
-Load Average: 0.77, 0.74, 1.00
+Load Average: 2.39, 2.83, 2.95
 ***WARNING*** CPU scaling is enabled, the benchmark real time measurements may be noisy and will incur extra overhead.
 -----------------------------------------------------------------
 Benchmark                       Time             CPU   Iterations
 -----------------------------------------------------------------
-basic_random_level          0.804 ns        0.802 ns    864008676
-redis_random_level           11.4 ns         11.3 ns     64170088
-rocksdb_random_level         6.09 ns         6.07 ns    123568867
-veigaribo_random_level      0.791 ns        0.790 ns    885007499
+basic_random_level           6.80 ns         6.76 ns    111294632
+redis_random_level           11.9 ns         11.8 ns     60282092
+rocksdb_random_level         5.94 ns         5.92 ns    117470117
+veigaribo_random_level       3.89 ns         3.88 ns    183228430
 ```

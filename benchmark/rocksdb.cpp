@@ -104,6 +104,7 @@ int RandomHeight() {
 
 static void rocksdb_random_level(benchmark::State &state) {
   for (auto _ : state) {
-    RandomHeight();
+    auto x = RandomHeight();
+    benchmark::DoNotOptimize(x);
   }
 }
