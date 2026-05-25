@@ -14,12 +14,12 @@
 #define FIX_RANGE (6)
 #define FIX_SCALE (32 - FIX_RANGE)
 
-#define FIX_DIV(a, b) (((uint64_t)(a) << 16) / (b) << 10)
+#define FIX_MUL(a, b) (((a) >> 13) * ((b) >> 13))
 
 #define FIX_ONE (1 << FIX_SCALE)
-#define FIX_LOG2_FIVE_OVER_SIXTEEN (0b00000110101101100101100001111011)
-#define FIX_LOG2_INV_E (0b00000101110001010101000111011001)
-#define FIX_LOG2_ONE_FOURTH (0b00001000000000000000000000000000)
+#define FIX_LOG2_FIVE_OVER_SIXTEEN (0b00000010011000100011100101100001)
+#define FIX_LOG2_INV_E (0b00000010110001011100100001011111)
+#define FIX_LOG2_ONE_FOURTH (0b00000001111111111111111111111111)
 
 static inline uint8_t leading_zero_count(uint32_t v) {
 #if defined(__LZCNT__)
@@ -52,7 +52,7 @@ static inline uint8_t get_random_level(uint32_t fix_log2_p, uint8_t max) {
   fix_random = fix_random >> FIX_RANGE;
   uint32_t fix_log_random = fix_log2_approx(fix_random);
 
-  uint32_t fix_result = FIX_ONE + FIX_DIV(fix_log_random, fix_log2_p);
+  uint32_t fix_result = FIX_ONE + FIX_MUL(fix_log_random, fix_log2_p);
   uint8_t result = (uint8_t)(fix_result >> FIX_SCALE);
 
   return (result < max) ? result : max;

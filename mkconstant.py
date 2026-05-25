@@ -5,11 +5,9 @@ import sys
 import io
 from typing import NoReturn
 
-
 INT_SIZE_BITS = 32
 RANGE_BITS = 6
 SCALE_BITS = INT_SIZE_BITS - RANGE_BITS
-
 
 help = f"""
 Given a probability `p` in the range (0, 1), returns its log base 2 in fixed point
@@ -48,7 +46,7 @@ if __name__ == '__main__':
     if not (0 < n < 1):
         error('argument should be between 0 and 1 exclusive')
 
-    log2_n = -math.log2(n)
+    log2_n = -1.0 / math.log2(n)
 
     mantissa, integral = math.modf(log2_n)
     integral_bin = format(int(integral), f'0{RANGE_BITS}b')
