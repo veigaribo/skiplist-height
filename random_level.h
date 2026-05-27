@@ -4,13 +4,6 @@
 #include "rng.h"
 #include <stdint.h>
 
-#if defined(__GNUC__)
-#include <x86gprintrin.h>
-#endif
-#if defined(__clang__)
-#include <x86intrin.h>
-#endif
-
 #define FIX_RANGE (6)
 #define FIX_SCALE (32 - FIX_RANGE)
 
@@ -22,19 +15,7 @@
 #define FIX_LOG2_ONE_FOURTH (0b00000001111111111111111111111111)
 
 static inline uint8_t leading_zero_count(uint32_t v) {
-#if defined(__LZCNT__)
-
-#if defined(__GNUC__)
-  return _lzcnt_u32(v);
-#endif
-#if defined(__clang__)
-  return __lzcnt32(v);
-#endif
-
-#else
-  return 0;
-#error "Not good without LZCNT (-mlzcnt)"
-#endif
+  return __builtin_clz(v);
 }
 
 static inline uint32_t fix_log2_approx(uint32_t fix_v) {
