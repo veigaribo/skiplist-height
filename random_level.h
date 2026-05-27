@@ -15,6 +15,10 @@
 #define FIX_LOG2_ONE_FOURTH (0b00000001111111111111111111111111)
 
 static inline uint8_t leading_zero_count(uint32_t v) {
+  if (v == 0) {
+    return 32;
+  }
+
   return __builtin_clz(v);
 }
 
